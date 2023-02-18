@@ -36,6 +36,11 @@ plugins=(git aws)
 
 source $ZSH/oh-my-zsh.sh
 
+function z-go() {
+    export PATH="$HOME/go/bin:$PATH"
+}
+z-go
+
 function z-node() {
     export NVM_DIR="$HOME/.nvm"
     source $(brew --prefix nvm)/nvm.sh
@@ -53,8 +58,8 @@ function z-py() {
     eval "$(pyenv virtualenv-init -)"
     add-to-path "/Users/ajmal/.local/bin"
 
-    # poetry env use $(pyenv which python)
-    # export PATH="$HOME/.poetry/bin:$PATH"
+    poetry env use $(pyenv which python)
+    export PATH="$HOME/.poetry/bin:$PATH"
 }
 
 function add-to-path() {

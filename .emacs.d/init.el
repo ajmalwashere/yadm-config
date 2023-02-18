@@ -5,15 +5,11 @@
 
 (defmacro comment (&rest body) nil)
 
-;; C-g -> quit
-;; C-x C-s -> save
-;; C-M-x -> evaluate expression under the cursor
-;; C-x k -> kill current buffer
-
-(setenv "PYTHONPATH"
-	(concat "/Users/ajmal/Documents/Bitbucket/mip-api/.venv/lib/python3.8/site-packages"
-		":"
-		"/Users/ajmal/Documents/Bitbucket/mip-api"))
+;; (setenv "PYTHONPATH"
+;; 	(concat "/Users/ajmal/Documents/Bitbucket/mip-api/.venv/lib/python3.8/site-packages"
+;; 		":"
+;; 		"/Users/ajmal/Documents/Bitbucket/mip-api")
+;;	)
 ;; (setenv "PATH" (concat (getenv "PATH") ":/Users/ajmal/Documents/Bitbucket/mip-api"))
 
 
@@ -29,7 +25,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(treemacs-tab-bar centaur-tabs evil-escape goto-last-change evil ein jupyter use-package yaml-mode dap-mode lsp-ivy helm-lsp company lsp-treemacs flycheck lsp-ui lsp-mode)))
+   '(docker dockerfile-mode auto-complete ejc-sql clojure-mode-extra-font-locking cider jenkinsfile-mode groovy-mode treemacs-tab-bar centaur-tabs evil-escape goto-last-change evil ein jupyter use-package yaml-mode dap-mode lsp-ivy helm-lsp company lsp-treemacs flycheck lsp-ui lsp-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -39,6 +35,7 @@
 
 (evil-mode 1)
 (ido-mode 1)
+(evil-escape-mode 1)
 
 ;; (use-package poetry :ensure t)
 
@@ -57,8 +54,16 @@
 (global-set-key (kbd "s-{") 'switch-to-prev-buffer)
 (global-set-key (kbd "s-}") 'switch-to-next-buffer)
 
+(global-set-key (kbd "s-;") 'comment-or-uncomment-region)
+
 (setq aw-dispatch-always t)
 
 (setq company-minimum-prefix-length 1)
 
 ;; (setq evil-default-state 'emacs
+
+(use-package eaf
+  :load-path "~/.emacs.d/site-lisp/emacs-application-framework"
+  )
+
+(require 'eaf-browser)
